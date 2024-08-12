@@ -1,0 +1,11 @@
+.shadow {
+  position: absolute;
+  bottom: -5px;
+
+  left: 10px;
+  width: 80px;
+  height: 5px;
+  border-radius: 100%;
+  transform: scale(0);
+  box-shadow: 0 15px 3px transparent;
+}

@@ -1,0 +1,32 @@
+$width: 180px;
+
+.conveyor {
+  position: absolute;
+  top: calc($width / -2);
+  left: calc($width / -2);
+  transform: rotate(45deg);
+  width: calc(430px + $width);
+  height: calc(430px + $width);
+}
+
+.swiper {
+  overflow: visible !important;
+  & > div {
+    transition-timing-function: linear !important;
+  }
+  :global {
+    .swiper-slide {
+      width: 250px;
+      height: calc((430px + $width) / 3);
+    }
+  }
+  :global(.swiper-slide-active) {
+    .card {
+      transform: rotateX(360deg);
+    }
+  }
+}
+
+.card {
+  transition: transform 420ms 100ms cubic-bezier(0, 0.96, 1, 1.07);
+}

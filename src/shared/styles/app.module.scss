@@ -1,0 +1,30 @@
+@keyframes coverleft {
+  0% {
+    transform: scaleX(0) skewX(15deg);
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(1) skewX(15deg);
+    transform-origin: right;
+  }
+}
+
+.cover {
+  position: fixed;
+  top: 0%;
+  left: -25%;
+  width: 150%;
+  height: 100%;
+  transform: scaleX(0) skewX(15deg);
+  transform-origin: right;
+  &.animation-one {
+    animation: coverleft 1800ms 300ms alternate 2 cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  &.animation-two {
+    animation: coverleft 1800ms 370ms alternate 2 cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  &.animation-three {
+    animation: coverleft 1800ms 410ms alternate 2 cubic-bezier(0.77, 0, 0.175, 1);
+  }
+}

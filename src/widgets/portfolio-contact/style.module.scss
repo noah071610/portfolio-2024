@@ -1,0 +1,81 @@
+.texture {
+  background-image: url("./images/paper.jpg");
+  background-size: cover;
+  opacity: 0.8; /* 투명도 조정 */
+  mix-blend-mode: multiply; /* 혼합 모드로 사진 질감 표현 */
+}
+
+@keyframes gentleShake {
+  0% {
+    transform: translate(-50%, -30px) scale(1.2) rotate(0deg);
+  }
+  10% {
+    transform: translate(calc(-50% - 5px), calc(-30px - 5px)) scale(1.2) rotate(-3deg);
+  }
+  20% {
+    transform: translate(calc(-50% + 5px), calc(-30px + 5px)) scale(1.2) rotate(3deg);
+  }
+  30% {
+    transform: translate(calc(-50% - 7px), calc(-30px - 7px)) scale(1.2) rotate(-5deg);
+  }
+  40% {
+    transform: translate(calc(-50% + 7px), calc(-30px + 7px)) scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: translate(calc(-50% - 6px), calc(-30px - 6px)) scale(1.2) rotate(-4deg);
+  }
+  60% {
+    transform: translate(calc(-50% + 6px), calc(-30px + 6px)) scale(1.2) rotate(4deg);
+  }
+  70% {
+    transform: translate(calc(-50% - 4px), calc(-30px - 4px)) scale(1.2) rotate(-3deg);
+  }
+  80% {
+    transform: translate(calc(-50% + 4px), calc(-30px + 4px)) scale(1.2) rotate(3deg);
+  }
+  90% {
+    transform: translate(calc(-50% - 2px), calc(-30px - 2px)) scale(1.2) rotate(-2deg);
+  }
+  100% {
+    transform: translate(-50%, -30px) scale(1.2) rotate(0deg);
+  }
+}
+
+.end {
+  height: auto;
+  .btn-wrapper {
+    height: 340px;
+  }
+  @media (min-width: 768px) {
+    height: calc(100vh - 360px);
+    .btn-wrapper {
+      height: calc(100vh - 360px - 150px);
+    }
+  }
+  .btn-bg {
+    background: linear-gradient(
+      108deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 55%,
+      rgba(251, 251, 255, 1) 56%,
+      rgba(255, 255, 255, 1) 59%,
+      rgba(255, 255, 255, 1) 62%,
+      rgba(0, 0, 0, 0) 58.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    transition: background-position 0.35s ease;
+    &:hover {
+      background-position: 140% 0%;
+    }
+  }
+  .lover {
+    transition: all 440ms cubic-bezier(0, 0.96, 0.6, 1.06);
+    transform: translate(-50%, 0);
+    &.active {
+      transform: translate(-50%, -30px) scale(1.2);
+      animation: gentleShake 1500ms 500ms infinite;
+    }
+  }
+}

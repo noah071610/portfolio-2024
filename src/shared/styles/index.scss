@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap");
+
+@font-face {
+  font-family: "Maplestory Light";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/MaplestoryLight.otf") format("opentype");
+}
+
+html {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 1rem;
+}
+h1,
+h2,
+h3 {
+  font-family: "Maplestory Light", "Noto Sans KR", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.edu-vic {
+  font-family: "Edu VIC WA NT Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-col-center {
+  @apply flex items-center justify-center flex-col;
+}
+
+.absolute-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.absolute-full {
+  @apply absolute top-0 left-0 w-full h-full;
+}
+
+.absolute-screen {
+  @apply absolute top-0 left-0 w-screen h-screen;
+}
+
+.main {
+  @apply w-screen h-screen overflow-hidden relative;
+}
+
+.grid-2 {
+  @apply grid grid-cols-2;
+}
+
+.grid-3 {
+  @apply grid grid-cols-3;
+}
+
+.text-point-bold {
+  @apply text-xl font-bold mr-[2px] mb-[1px] inline-block;
+}
+
+.rainbow {
+  background-color: #566cec;
+  background-image: linear-gradient(90deg, #ffc83a, #ff008a 55%, #6100ff);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-repeat: repeat;
+  background-size: 100%;
+  display: inline-block;
+}
+
+input[type="text"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+}
+
+@keyframes rubberBand {
+  0% {
+    transform: rotate(0deg) scale3d(1, 1, 1);
+  }
+
+  10% {
+    transform: rotate(-15deg) scale3d(1, 1, 1);
+  }
+
+  20% {
+    transform: rotate(15deg) scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: rotate(-10deg) scale3d(1, 1, 1);
+  }
+
+  40% {
+    transform: rotate(10deg) scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: rotate(-5deg) scale3d(1, 1, 1);
+  }
+
+  60% {
+    transform: rotate(5deg) scale3d(1, 1, 1);
+  }
+
+  70% {
+    transform: rotate(0deg) scale3d(1, 1, 1);
+  }
+
+  80% {
+    transform: rotate(0deg) scale3d(0.9, 0.9, 0.9);
+  }
+
+  100% {
+    transform: rotate(0deg) scale3d(1, 1, 1);
+  }
+}

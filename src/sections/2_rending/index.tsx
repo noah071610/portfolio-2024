@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useRef, useState } from "react"
-import { useMediaQuery } from "usehooks-ts"
+import { useEventListener, useMediaQuery } from "usehooks-ts"
 import style from "./style.module.scss"
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,7 +12,8 @@ const cx = cs.bind(style)
 
 const sunAnimationVariants = {
   hidden: { translateY: 440, opacity: 0 },
-  visible: { translateY: 0, opacity: 1 },
+  visible: { scale: 1, translateY: 0, opacity: 1 },
+  show: { scale: 0.9 },
 }
 
 const backgroundAnimationVariants = {
@@ -20,11 +21,11 @@ const backgroundAnimationVariants = {
   visible: { translateY: 0, scale: 1, opacity: 1 },
 }
 
-const sunAnimationTransition = (delay?: number) => ({
+const sunAnimationTransition = (stage: string, delay?: number) => ({
   type: "spring",
   stiffness: 200,
   damping: 22,
-  delay: (delay ?? 0) + 0.6,
+  delay: stage === "show" || stage === "visible" ? 0 : (delay ?? 0) + 0.6,
 })
 
 export default function RendingPage({ readyToAnimate }: { readyToAnimate: boolean }) {
@@ -58,23 +59,15 @@ export default function RendingPage({ readyToAnimate }: { readyToAnimate: boolea
     }
   }, [readyToAnimate])
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Check if the element is within the viewport
-      if (window.scrollY > 30) {
-        setStage("show")
-      } else {
-        setStage("visible")
-      }
+  const handleScroll = () => {
+    // Check if the element is within the viewport
+    if (window.scrollY > 30) {
+      setStage("show")
+    } else {
+      setStage("visible")
     }
-
-    window.addEventListener("scroll", handleScroll)
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+  }
+  useEventListener("scroll", handleScroll)
 
   useEffect(() => {
     if (stage === "rended") return
@@ -87,21 +80,21 @@ export default function RendingPage({ readyToAnimate }: { readyToAnimate: boolea
         initial="hidden"
         animate={controls}
         variants={sunAnimationVariants}
-        transition={sunAnimationTransition()}
+        transition={sunAnimationTransition(stage)}
         className={cx("absolute top-[50px] right-[50px] w-[500px] h-[500px] bg-orange-100 rounded-full flex-center")}
       >
         <motion.div
           initial="hidden"
           animate={controls}
           variants={sunAnimationVariants}
-          transition={sunAnimationTransition(0.1)}
+          transition={sunAnimationTransition(stage, 0.1)}
           className={cx("w-[350px] h-[350px] bg-orange-200 rounded-full flex-center")}
         >
           <motion.div
             initial="hidden"
             animate={controls}
             variants={sunAnimationVariants}
-            transition={sunAnimationTransition(0.25)}
+            transition={sunAnimationTransition(stage, 0.25)}
             className={cx("w-[200px] h-[200px] bg-orange-400 rounded-full")}
           ></motion.div>
         </motion.div>

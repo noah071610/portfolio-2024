@@ -19,7 +19,9 @@ export default function LoadingPage({
 
   useEffect(() => {
     if (!allLogosLoaded) return
-    const engine = Engine.create()
+    const engine = Engine.create({
+      gravity: { x: 0, y: 1.4 },
+    })
     const render = Render.create({
       engine,
       canvas: canvasRef?.current!,
@@ -78,14 +80,14 @@ export default function LoadingPage({
     // keep the mouse in sync with rendering
     render.mouse = mouse
 
-    const iconSize = 50
+    const iconSize = 40
     const getY = () => {
       return -getRandom(100, 500)
     }
 
     const rows = [
       ["docker", "github", "nestjs", "nextjs"].map((v) =>
-        getCircle(getRandom(50, window.innerWidth - 50), getY(), iconSize, v)
+        getCircle(getRandom(300, window.innerWidth - 50), getY(), iconSize, v)
       ),
       [
         "aws",
@@ -99,14 +101,15 @@ export default function LoadingPage({
         "notion",
         "sass",
         "slack",
-      ].map((v) => getRectangle(getRandom(50, window.innerWidth - 50), getY(), iconSize, v)),
-      ["nginx", "react", "nodejs"].map((v) => getPolygon(getRandom(50, window.innerWidth - 50), getY(), iconSize, v)),
+      ].map((v) => getRectangle(getRandom(300, window.innerWidth - 50), getY(), iconSize, v)),
+      ["nginx", "react", "nodejs"].map((v) => getPolygon(getRandom(300, window.innerWidth - 50), getY(), iconSize, v)),
     ]
 
     World.add(world, [leftWall, rightWall, ground, mouseConstraint])
 
     Render.run(render)
-    Runner.run(engine)
+    const runner = Runner.create()
+    Runner.run(runner, engine)
 
     const sleep = 700
     setTimeout(() => {
@@ -114,13 +117,13 @@ export default function LoadingPage({
     }, sleep)
     setTimeout(() => {
       World.add(world, topWall)
-    }, sleep + 600)
+    }, sleep + 1000)
 
     return () => {
       Render.stop(render)
       World.clear(engine.world, false)
       Engine.clear(engine)
-      //   render.canvas.remove()
+      render.canvas.remove()
     }
   }, [allLogosLoaded])
 

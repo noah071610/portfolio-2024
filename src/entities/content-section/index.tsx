@@ -22,11 +22,11 @@ function ContentSection({ title, subTitle, content, number, children, noPaddingS
       )}
     >
       <div className={cx("flex flex-col items-center md:mb-16 mb-10")}>
-        <h2 className={cx("text-4xl text-center mb-2")}>{title}</h2>
-        <h4 className={cx("mb-12", style["sub-header"])}>({subTitle})</h4>
+        <h2 className={cx("text-3xl sm:text-4xl text-center mb-2")}>{title}</h2>
+        <h4 className={cx("mb-12 min-w-[100px] text-center", style["sub-header"])}>({subTitle})</h4>
         <p
           dangerouslySetInnerHTML={{ __html: content }}
-          className={cx("text-center text-[#181c31dd] text-md leading-6 font-medium")}
+          className={cx("text-center text-[#181c31dd] text-sm xs:text-lg font-medium")}
         ></p>
       </div>
       {children}

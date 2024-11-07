@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const useImagesLoaded = (imageSrcs: string[], isIcons?: boolean) => {
+const useImagesLoaded = (imageSrcs: string[]) => {
   const [allImagesLoaded, setAllImagesLoaded] = useState(false)
 
   useEffect(() => {
@@ -11,8 +11,6 @@ const useImagesLoaded = (imageSrcs: string[], isIcons?: boolean) => {
 
     let loadedCount = 0
     const handleImageLoad = () => {
-      console.log("load!")
-
       loadedCount += 1
       if (loadedCount === imageSrcs.length) {
         setAllImagesLoaded(true)
@@ -20,8 +18,6 @@ const useImagesLoaded = (imageSrcs: string[], isIcons?: boolean) => {
     }
 
     const handleImageError = () => {
-      console.log("error!")
-
       loadedCount += 1
       if (loadedCount === imageSrcs.length) {
         setAllImagesLoaded(true)

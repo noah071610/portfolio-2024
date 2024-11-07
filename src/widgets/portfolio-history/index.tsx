@@ -76,7 +76,7 @@ const History = ({ date, title, subTitle, i }: HistoryProps) => {
           })}
         >
           <div className={cx(`w-full ${colors[i % 9]} p-4`)}>
-            <h3 className={cx(`text-md`)}>{title}</h3>
+            <h3 className={cx(`text-md font-semibold`)}>{title}</h3>
           </div>
           <div className={cx("w-full p-4")}>
             {subTitle && <p className={cx("text-sm mb-2")} dangerouslySetInnerHTML={{ __html: subTitle }}></p>}
@@ -94,7 +94,7 @@ export default function PortfolioHistory() {
       title="경력 & 자격증"
       subTitle="History"
       number={3}
-      content={"지금까지의 경력과 자격증, 활동 등을 소개할게요!"}
+      content={"지금까지의 경력과 자격증, 활동 등을 소개할게요"}
     >
       <div className={cx("w-full relative sm:pt-0 pt-4")}>
         <div className={cx("w-[1px] bg-g-blue h-full absolute top-0 left-1/2 -translate-x-1/2")}></div>

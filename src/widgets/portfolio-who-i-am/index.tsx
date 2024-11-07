@@ -33,234 +33,118 @@ const whoILike = [
   },
 ]
 
+const animateElement = (tl: any, ref: any, animation: any, index: number) => {
+  tl.to(ref.current, animation, index)
+}
+
 export default function PortfolioWhoIAM() {
   const isDesktop = useMediaQuery("(min-width: 435px)")
-  const [
-    sceneRef,
-    gridRef,
-    descBoxRef,
-    content1Ref,
-    content2Ref,
-    content3Ref,
-    box1Ref,
-    box2Ref,
-    box3Ref,
-    shadow1Ref,
-    shadow2Ref,
-    shadow3Ref,
-    desc1Ref,
-    desc2Ref,
-    desc3Ref,
-  ] = Array.from({ length: 15 }, () => useRef<HTMLDivElement | null>(null))
+  const [sceneRef, gridRef, descBoxRef, content1Ref, content2Ref, content3Ref, desc1Ref, desc2Ref, desc3Ref] =
+    Array.from({ length: 9 }, () => useRef<HTMLDivElement | null>(null))
   const [icon1Ref, icon2Ref, icon3Ref] = Array.from({ length: 3 }, () => useRef<HTMLImageElement | null>(null))
 
   useLayoutEffect(() => {
     if (!sceneRef.current) return
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sceneRef.current,
-        // markers: true,
-        pin: true,
-        pinnedContainer: sceneRef.current,
-        start: "0px 0px",
-        end: "4000px 0px",
-        scrub: 1,
-      },
-    })
 
-    let index = 0
+    // ScrollTrigger 초기화 함수
+    const initAnimation = () => {
+      // 기존 ScrollTrigger들을 정리
+      ScrollTrigger.getAll().forEach((st) => st.kill())
 
-    if (!isDesktop) {
-      tl.to(
-        gridRef.current,
-        isDesktop
-          ? {}
-          : {
-              translateX: "33%",
-              duration: 1,
-            },
-        index
-      )
-      ++index
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sceneRef.current,
+          pin: true,
+          pinnedContainer: sceneRef.current,
+          start: "0px 0px",
+          end: "4000px 0px",
+          scrub: true,
+        },
+      })
+
+      let index = 0
+
+      const commonAnimations = [
+        !isDesktop ? { ref: gridRef, animation: { translateX: "33%", duration: 1 }, increaseIndex: true } : {}, // 1
+        { ref: content1Ref, animation: { filter: "grayscale(0%)" }, increaseIndex: false },
+        { ref: desc1Ref, animation: { opacity: 1, scale: 1 }, increaseIndex: false },
+
+        { ref: content1Ref, animation: { duration: 1 }, increaseIndex: true },
+
+        { ref: icon1Ref, animation: { translateX: "-15px" }, increaseIndex: true },
+
+        { ref: icon1Ref, animation: { translateX: "170px" }, increaseIndex: true },
+        !isDesktop ? { ref: gridRef, animation: { translateX: "0", duration: 1 }, increaseIndex: true } : {}, // 1
+
+        { ref: content1Ref, animation: { filter: "grayscale(100%)" }, increaseIndex: false },
+        { ref: content2Ref, animation: { filter: "grayscale(0)" }, increaseIndex: false },
+        { ref: desc1Ref, animation: { opacity: 0, scale: 0.5 }, increaseIndex: false },
+        { ref: descBoxRef, animation: { translateY: isDesktop ? "-150px" : "-180px" }, increaseIndex: false },
+        { ref: desc2Ref, animation: { scale: 1, opacity: 1 }, increaseIndex: false },
+        { ref: icon2Ref, animation: { translateX: "0" }, increaseIndex: false },
+
+        { ref: content2Ref, animation: { duration: 1 }, increaseIndex: true },
+
+        { ref: icon2Ref, animation: { translateX: "-15px" }, increaseIndex: true },
+
+        { ref: icon2Ref, animation: { translateX: "170px" }, increaseIndex: true },
+        !isDesktop ? { ref: gridRef, animation: { translateX: "-33%", duration: 1 }, increaseIndex: true } : {},
+
+        { ref: content2Ref, animation: { filter: "grayscale(100%)" }, increaseIndex: false },
+        { ref: content3Ref, animation: { filter: "grayscale(0)" }, increaseIndex: false },
+        { ref: desc2Ref, animation: { opacity: 0, scale: 0.5 }, increaseIndex: false },
+        { ref: descBoxRef, animation: { translateY: isDesktop ? "-300px" : "-360px" }, increaseIndex: false },
+        { ref: desc3Ref, animation: { scale: 1, opacity: 1 }, increaseIndex: false },
+        { ref: icon3Ref, animation: { translateX: "0px" }, increaseIndex: false },
+
+        { ref: content3Ref, animation: { duration: 1 }, increaseIndex: true },
+      ]
+
+      // Apply common animations
+      commonAnimations.forEach((v) => {
+        if (Object.keys(v).length > 0) {
+          animateElement(tl, v.ref, v.animation, index)
+          if (v.increaseIndex) {
+            index++
+          }
+        }
+      })
+
+      // Mobile reset grid animation
+      if (!isDesktop) {
+        animateElement(tl, gridRef, { translateX: "-33%", duration: 1 }, index)
+        index++
+      }
     }
-    tl.to(
-      content1Ref.current,
-      {
-        filter: "grayscale(0%)",
-      },
-      index
-    )
-      .to(
-        desc1Ref.current,
-        {
-          opacity: 1,
-          scale: 1,
-        },
-        index
-      )
-      .to(
-        content1Ref.current,
-        {
-          duration: 2,
-        },
-        index++
-      )
-      .to(
-        icon1Ref.current,
-        {
-          translateX: "-15px",
-          duration: 0.5,
-        },
-        ++index
-      )
-      .to(
-        icon1Ref.current,
-        {
-          translateX: "170px",
-          duration: 0.7,
-        },
-        ++index
-      )
-      .to(
-        gridRef.current,
-        isDesktop
-          ? {}
-          : {
-              translateX: 0,
-              duration: 1,
-            },
-        isDesktop ? index : ++index
-      ) // for mobile
-      .to(
-        content1Ref.current,
-        {
-          filter: "grayscale(100%)",
-        },
-        index
-      )
-      .to(
-        content2Ref.current,
-        {
-          filter: "grayscale(0)",
-        },
-        index
-      )
-      .to(
-        desc1Ref.current,
-        {
-          opacity: 0,
-          scale: 0.5,
-        },
-        index
-      )
-      .to(
-        descBoxRef.current,
-        {
-          translateY: isDesktop ? "-150px" : "-180px",
-        },
-        index
-      )
-      .to(
-        desc2Ref.current,
-        {
-          scale: 1,
-          opacity: 1,
-        },
-        index
-      ) // page 2 visible
-      .to(
-        content2Ref.current,
-        {
-          duration: 2,
-        },
-        index++
-      )
-      .to(
-        icon2Ref.current,
-        {
-          translateX: "155px",
-          duration: 0.5,
-        },
-        ++index
-      )
-      .to(
-        icon2Ref.current,
-        {
-          translateX: "340px",
-          duration: 0.7,
-        },
-        ++index
-      )
-      .to(
-        gridRef.current,
-        isDesktop
-          ? {}
-          : {
-              translateX: "-33%",
-              duration: 1,
-            },
-        isDesktop ? index : ++index
-      ) // for mobile
-      .to(
-        icon3Ref.current,
-        {
-          translateX: "170px",
-          duration: 0.7,
-        },
-        ++index
-      )
-      .to(
-        content2Ref.current,
-        {
-          filter: "grayscale(100%)",
-        },
-        index
-      )
-      .to(
-        content3Ref.current,
-        {
-          filter: "grayscale(0)",
-        },
-        index
-      )
-      .to(
-        desc2Ref.current,
-        {
-          opacity: 0,
-          scale: 0.5,
-        },
-        index
-      )
-      .to(
-        descBoxRef.current,
-        {
-          translateY: isDesktop ? "-300px" : "-360px",
-        },
-        index
-      )
-      .to(
-        desc3Ref.current,
-        {
-          scale: 1,
-          opacity: 1,
-        },
-        index
-      ) // page 3 visible
-      .to(
-        content3Ref.current,
-        {
-          duration: 2,
-        },
-        index++
-      )
-  }, [])
+
+    // 초기 애니메이션 설정
+    initAnimation()
+
+    // 리사이즈 이벤트에 대한 디바운스 처리
+    let resizeTimer = undefined as any
+    const handleResize = () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => {
+        initAnimation()
+      }, 250)
+    }
+
+    // 리사이즈 이벤트 리스너 등록
+    window.addEventListener("resize", handleResize)
+
+    // 클린업 함수
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      ScrollTrigger.getAll().forEach((st) => st.kill())
+    }
+  }, [isDesktop]) // isDesktop 의존성 추가
 
   return (
     <ContentSection
-      title="저는 이런 사람이에요"
+      title="저는 이런 개발자에요"
       subTitle="Who i am"
       number={4}
-      content={"마지막으로 저에 대해서 소개할게요!"}
+      content={"마지막으로 저에 대해서 소개할게요"}
     >
       <div className={cx("w-full overflow-hidden h-[4800px]")}>
         <div ref={sceneRef} className={cx("w-full h-screen flex-center flex-col")}>
@@ -279,19 +163,13 @@ export default function PortfolioWhoIAM() {
                   className={cx(
                     `relative overflow-hidden w-full h-[250px] p-8  bg-red-100 mb-4 flex-center rounded-full border-[10px] shadow-xl ${borderColor}`
                   )}
-                  ref={i === 0 ? box1Ref : i === 1 ? box2Ref : box3Ref}
                 >
-                  <div className={cx("relative")} ref={i === 0 ? icon1Ref : i === 1 ? icon2Ref : icon3Ref}>
-                    <motion.img
-                      className={cx("w-[100px] h-[100px]", { ["-translate-x-[170px]"]: i > 0 })}
-                      src={`./images/icons/${icon}`}
-                      alt=""
-                    />
-                    <div
-                      ref={i === 0 ? shadow1Ref : i === 1 ? shadow2Ref : shadow3Ref}
-                      className={cx(style.shadow)}
-                    ></div>
-                  </div>
+                  <motion.img
+                    ref={i === 0 ? icon1Ref : i === 1 ? icon2Ref : icon3Ref}
+                    className={cx("w-[100px] h-[100px]", { ["-translate-x-[170px]"]: i > 0 })}
+                    src={`./images/icons/${icon}`}
+                    alt={`${icon}-image`}
+                  />
                 </div>
                 <h3 className={cx("text-center text-xl")}>{title}</h3>
               </div>

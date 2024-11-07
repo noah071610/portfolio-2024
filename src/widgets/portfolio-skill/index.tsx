@@ -13,9 +13,10 @@ import { useIntersectionObserver } from "usehooks-ts"
 const cx = cs.bind(style)
 
 const skills = {
-  frontend: ["figma", "javascript", "typescript", "react", "nextjs", "sass", "tailwind-css", "react-query", "zustand"],
+  frontend: ["javascript", "typescript", "react", "nextjs", "sass", "tailwind-css", "react-query", "zustand"],
   backend: ["nodejs", "nestjs", "mysql", "jest"],
   infra: ["github", "docker", "nginx", "aws"],
+  mobile: ["flutter"],
 }
 
 const conveyor = {
@@ -43,7 +44,7 @@ export default function PortfolioSkill() {
       title="기술스택"
       subTitle="Skill set"
       content={
-        '"해봤다", "흥미있다" 는 전부 제외하고 점수를 매기지도 않았어요. <br /> 당장 실무에서 써도 제 최대 실력을 발휘할 기술만 작성했습니다.'
+        '"해봤다", "흥미있다" 는 전부 제외하고 점수를 매기지도 않았어요. <br class="hidden xs:block" /> 당장 실무에서 써도 제 최대 실력을 발휘할 기술만 작성했습니다.'
       }
       number={1}
     >

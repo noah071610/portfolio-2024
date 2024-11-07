@@ -41,8 +41,8 @@ export default function PortfolioBanner() {
           <br />
           저는 스타트업 초기멤버로 1년 6개월 풀스택 근무 경험 후,
           <br />
-          풀스택 1인 개발으로 MAU 100명 그리고 회원수 30명의
-          <br /> 인터랙티브 폼을 운영해본 경험이 있는 장현수입니다.
+          1인 개발으로 DAU 최대 200을 달성한
+          <br /> 인터랙티브 폼을 운영하고 있는 장현수 입니다.
         </p>
       </div>
       <div className={cx("relative w-full h-full flex justify-end items-end", style.icon)}>

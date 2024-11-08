@@ -1,3 +1,5 @@
+import { Swiper, SwiperSlide } from "swiper/react"
+
 export const tags = [
   {
     key: "achieve",
@@ -61,6 +63,9 @@ export const skillMap = {
   cloudwatch: "Amazon%20CloudWatch-FF4F8B?logo=amazoncloudwatch&logoColor=fff",
   tailwindcss: "Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff",
   flutter: "Flutter-02569B?logo=flutter&logoColor=fff",
+  hive: "Hive-FF7043?logo=hive&logoColor=fff",
+  riverpod: "Riverpod-1967D2?logo=dart&logoColor=fff",
+  appstore: "App%20Store-0D96F6?logo=appstore&logoColor=fff",
   googleTagManager: "Google%20Tag%20Manager-246FDB?logo=googletagmanager&logoColor=fff",
 }
 
@@ -144,6 +149,16 @@ export const articles = [
       skillMap.ec2,
     ],
   },
+  {
+    value: "wordbook",
+    title: "AI 스마트 단어장",
+    date: "2024년 9월 ~ 10월",
+    tag: "1인 앱 개발",
+    link: "https://apps.apple.com/kr/app/ai-%EC%8A%A4%EB%A7%88%ED%8A%B8-%EB%8B%A8%EC%96%B4%EC%9E%A5/id6736598728",
+    desc: "<span class='font-semibold'>내가 실제로 쓰고 외울 만 한 가치가 있다고 생각하는 단어는 내가 직접 만들고 외워야 하니까..!</span><div class='py-1'></div>AI 스마트 단어장은 문장 속 단어를 추출하거나 요청 문장의 맥락을 유추해서 AI가 자동으로 단어장을 만들어 줘요. 모은 단어는 실제 단어장에 한땀 한땀 적은 단어장 처럼 공부 할 수 있게 다양한 기능도 함께 제공 됩니다!",
+    color: "bg-[#fcf0eb]",
+    skills: [skillMap.flutter, skillMap.hive, skillMap.riverpod, skillMap.appstore],
+  },
 ]
 
 export const titles = articles.map(({ title }) => title)
@@ -197,6 +212,24 @@ export const portfolio_comp: {
         </video>
         <video className="w-full  rounded-lg border border-border" autoPlay loop muted playsInline>
           <source src="/images/rankingtogether/result-3.mp4" type="video/mp4" />
+          브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+      </div>
+
+      <h3 className={"border-l-8 border-pink-200 pl-4 mt-8 mb-2 text-xl  font-semibold"}>
+        나만의 스토리와 재밌는 캐릭터를 직접 만들어 소통해봐요 ✍🏻
+      </h3>
+      <div className={"grid grid-cols-3 gap-1 h-[370px]"}>
+        <video className="w-full  rounded-lg border border-border" autoPlay loop muted playsInline>
+          <source src="/images/rankingtogether/vn-1.mp4" type="video/mp4" />
+          브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+        <video className="w-full  rounded-lg border border-border" autoPlay loop muted playsInline>
+          <source src="/images/rankingtogether/vn-2.mp4" type="video/mp4" />
+          브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+        <video className="w-full h-[370px] rounded-lg border border-border" autoPlay loop muted playsInline>
+          <source src="/images/rankingtogether/vn-3.mp4" type="video/mp4" />
           브라우저가 비디오 태그를 지원하지 않습니다.
         </video>
       </div>
@@ -302,6 +335,24 @@ export const portfolio_comp: {
       </div>
     </>
   ),
+  wordbook: (
+    <>
+      <h3 className={"border-l-8 border-[#fcf0eb] pl-4 mt-8 mb-2 text-xl font-semibold"}>
+        불필요한 기능없는 심플한 단어장, 근데 이젠 AI를 곁들인... 🤖
+      </h3>
+      <Swiper slidesPerView="auto" spaceBetween={10} freeMode={true} className="w-full">
+        {[1, 2, 3, 4].map((num) => (
+          <SwiperSlide key={num} className="w-[240px] h-[450px]">
+            <img
+              src={`/images/wordbook/wordbook-${num}.webp`}
+              alt={`AI 스마트 단어장 스크린샷 ${num}`}
+              className="w-full h-auto rounded-xl border border-border"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
+  ),
 }
 
 export const portfolio_info: {
@@ -358,7 +409,7 @@ export const portfolio_info: {
       list: [
         "dynamic import, image lazy loading 사용해 초기 로딩 속도 약 <span class='mark'>30% 개선</span>",
         "react query의 캐싱과 Next.js cache, SSG 적용",
-        "Animation 최적화 (reflow 방지, debounce, throttle, will-change)",
+        "Animation 최적화 (reflow 방, debounce, throttle, will-change)",
       ],
     },
     {
@@ -381,7 +432,7 @@ export const portfolio_info: {
       tags: [tags[2]],
       title: "CSS 라이브러리 성능 개선",
       list: [
-        "[원인] : styled-component의 props 삽입 시 style-sheet 대량 생성 문제 발견",
+        "[원인] : styled-component의 props 삽 시 style-sheet 대량 생성 문제 발견",
         "[해결] : CSS in JS의 문제점과 한계를 인지하고 CTO와 협의 후 SCSS로 변경 (현재는 tailwindcss 선호)",
       ],
     },
@@ -420,6 +471,7 @@ export const portfolio_info: {
     },
   ],
   receptori: [],
+  wordbook: [],
 
   rankingtogether: [
     {

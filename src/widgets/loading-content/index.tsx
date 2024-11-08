@@ -2,7 +2,7 @@ import LoadingBar from "@/entities/loading-bar"
 
 function LoadingContent() {
   return (
-    <div className="absolute-center z-10">
+    <div className="absolute-center z-10 ">
       <LoadingBar />
     </div>
   )

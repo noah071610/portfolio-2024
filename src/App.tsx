@@ -51,6 +51,9 @@ const videos = [
   "/rankingtogether/result-1",
   "/rankingtogether/result-2",
   "/rankingtogether/result-3",
+  "/rankingtogether/vn-1",
+  "/rankingtogether/vn-2",
+  "/rankingtogether/vn-3",
   "/rankingtogether/preview-edit",
 ].map((v) => "/images" + v + ".mp4")
 
@@ -68,14 +71,20 @@ const imageFiles = [
   "cloud-2.png",
   "doda-thumbnail.png",
   "receptori-thumbnail.png",
+  "wordbook-thumbnail.png",
   "rankingtogether-thumbnail.png",
   "github.png",
   "logo.png",
   "me.png",
   "paper.jpg",
   "people.png",
+  "ilda.png",
+  "damin.png",
   "wave-1.svg",
   "wave-2.svg",
+  "wordbook/wordbook-1.webp",
+  "wordbook/wordbook-2.webp",
+  "wordbook/wordbook-3.webp",
 ].map((v) => "/images/" + v)
 
 function App() {

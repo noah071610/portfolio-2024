@@ -15,7 +15,7 @@ const reviews = [
     name: "Ilba Back",
     angle: "rotate-[-8deg]",
     pin: "left-1/2",
-    image: "me.png",
+    image: "/images/ilda.png",
     position: "From CTO. 백일다",
     title: "모든 칭찬 할 수 있는 용어를 다 쓰고 싶습니다",
     desc: `<span class='font-semibold'>현수님은 굉장히 열정적인 자기 학습 능력을 가지셨습니다.</span><div class='py-1.5'></div>다른 분들은 대부분 새로운 기술에 대해 피로감을 느끼시는데
@@ -27,8 +27,7 @@ const reviews = [
 <span class='mark'>지금까지 본 개발자 중 제일 잘하신 분은 현수님이었습니다.</span> 이직 힘내세요!`,
     ps: [
       "도다마인드 CTO 백일다님의 동의를 구하고 사실만을 작성했다는 것을 알려드립니다.",
-      "도다마인드 관련 포트폴리오 성과 등 진위 여부는 직접 CTO에게 사실 확인을 받은 후 작성했다는 것을 알려드립니다.",
-      "백일다 이메일: noah071610@gmail.com",
+      "도다마인드 관련 포트폴리오 성과 등 진위 여부는 직접 사실 확인을 받은 후 작성했다는 것을 알려드립니다.",
     ],
   },
   {
@@ -36,12 +35,11 @@ const reviews = [
     name: "Damin Kim",
     angle: "rotate-[12deg]",
     pin: "right-0",
-    image: "me.png",
+    image: "/images/damin.png",
     position: "Graphic Designer. 김다민",
-    title: "디자이너로서 가장 편했던 유일한 개발자",
+    title: "무엇보다 같이 일하는게 너무 편했어요!",
     desc: `<span class='font-semibold'>저는 디자이너이기 때문에 철저히 디자이너로서의 관점으로</span><div class='py-1.5'></div> 
-    현수님은 지금까지 만나본 개발자 중 간단한 요청 사항도 디자인적인 요소를 고려해 알아서 구현해주고 때론 피드백도 주는
-유일한 개발자였기 때문에 <span class='mark'>다른 개발자와 협업 할 때 보다 상대적으로 가장 편하고 좋았습니다!</span><div class='py-1.5'></div> 
+    현수님은 지금까지 만나본 개발자 중 시안을 주면 디자인적인 요소를 고려해 구현하고 피드백도 주시는 거의 "유일한" 개발자셨기 때문에 <span class='mark'>다른 개발자보다 협업 할 때 너무 편하고 좋았어요!</span><div class='py-1.5'></div> 
 `,
     ps: ["도다마인드 전 디자이너님의 동의를 구하고 사실만을 작성했다는 것을 알려드립니다."],
   },
@@ -96,7 +94,7 @@ export default function PortfolioContact() {
                 <picture>
                   <img
                     className={cx("w-full h-[200px] object-cover bg-slate-400")}
-                    src="https://plus.unsplash.com/premium_photo-1682093244743-29d7a6aee65d?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src={review.image}
                     alt="reviewer_pic"
                   />
                 </picture>

@@ -106,7 +106,9 @@ export default function PortfolioContent() {
                       target="_blank"
                     >
                       <div className={cx("w-full h-full py-1 px-5 ", style["btn-bg"])}>
-                        <span className={cx("text-sm leading-7")}>웹사이트 방문</span>
+                        <span className={cx("text-sm leading-7")}>
+                          {value === "wordbook" ? "앱스토어 바로가기" : "웹사이트 방문"}
+                        </span>
                       </div>
                     </motion.a>
                   </div>

@@ -1,0 +1,17 @@
+<svg
+  id="visual"
+  viewBox="0 0 1000 200"
+  width="1000"
+  height="200"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="1.1"
+>
+  <rect x="0" y="0" width="1000" height="200" fill="#f8f8fc"></rect>
+  <path
+    d="M0 111L41.7 119.5C83.3 128 166.7 145 250 145.5C333.3 146 416.7 130 500 103.2C583.3 76.3 666.7 38.7 750 27.8C833.3 17 916.7 33 958.3 41L1000 49L1000 201L958.3 201C916.7 201 833.3 201 750 201C666.7 201 583.3 201 500 201C416.7 201 333.3 201 250 201C166.7 201 83.3 201 41.7 201L0 201Z"
+    fill="#ffffff"
+    stroke-linecap="round"
+    stroke-linejoin="miter"
+  ></path>
+</svg>
